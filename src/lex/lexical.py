@@ -21,19 +21,30 @@ Documents to be read by the programmer (IGNORE UNTIL NEXT TOPIC IF YOU'RE SEARCH
     
 """
 import sys
+
+
 def canOpener(somefile) -> list:
+    zed: list 
+    with somefile.readlines() as f: 
+        for line in f:
+            zed += line
+    
     pass
 
 def bigAssAnalyzer(filelines: list) -> list:
     pass
 
-def main(pathtopas: str) -> None:
-    pass #TODO
-
+def basicAssError(*argv):
+    if len(argv) < 1:
+        print("NO FILE") #default 
+        quit()
+    else:
+        for msg in argv:
+            print(msg)
+            quit()
 ##basic nofuckup method1 :
 if __name__ == "__main__" and len(sys.argv) < 2:
-    print("NO FILE")
-    quit()
+    basicAssError()
 #here is the actual program:
 elif __name__ == "__main__" and sys.argv[1] != "--debug":
     flag = 0
@@ -43,10 +54,16 @@ elif __name__ == "__main__" and sys.argv[1] != "--debug":
             flag = 1
             break
     if flag == 0: #basic ass flag check
-        print("NO FILE")
-        quit()
-    
-    main(pathtopas)
+        basicAssError()
+    try:
+        betta = open(pathtopas)
+    except:
+        basicAssError()
+    zetta = canOpener(betta)
+    zetta = bigAssAnalyzer(zetta)
+
+
+
     
 
 
