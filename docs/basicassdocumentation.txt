@@ -1,0 +1,31 @@
+what is this document?
+    This is the basic ass documentation. Not a documentation about ass, but as in a slang to
+    very very basic, therefore, basic ass documentation. 
+
+Index
+    1. stateofthecode
+        This is a devlog of some kind to display in most detail how the code came to be
+        and the research involved in it. This piece has no orderly fashion; expect major 
+        cursing and cussing. 
+    2. design
+        Description of the code design 
+    3. functioning
+        Explanations on how most of the stuff works and its systems and subsystems
+    4. usage
+        How the program and its parts should be used to get what you expect.
+
+1. STATEOFTHECODE
+2. DESIGN
+3. FUNCTIONING 
+4. USAGE 
+    4.1. Requirements
+        This program should require python installed. To do so, use a search engine 
+        to find the official python site and install python on your machine. 
+    4.2 Basic usage
+        After cloning the project, open the src folder and run as such:
+            python main.py <path-to-your-pascal-code.pas>
+        main.py serves no other purpose.
+    4.3 Lexical analyzer TODO
+    4.4 Synthatical analyzer TODO
+    4.5 Code generator TODO
+    
