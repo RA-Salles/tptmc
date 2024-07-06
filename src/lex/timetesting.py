@@ -14,6 +14,8 @@
     passed test3_simple
 
 """
+import time
+start_time = time.time()
 
 import os 
 import sys
@@ -185,6 +187,8 @@ for key in analysis:
     print(key + ": " + str(analysis[key]))
 
 file.close()
+
+print("--- %s seconds ---" % (time.time() - start_time))
 
 
 

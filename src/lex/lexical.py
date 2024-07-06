@@ -93,49 +93,35 @@ def bigAssAnalyzer(allwords: list, comments: int) -> dict:
             'UNKNOWN': 0 
         }
     while(len(allwords) > 0): #we gotta check for all possibilities.
-        #print("fetching next word")
         try:
             thisword : str = allwords.pop(0)
-            #print("Word fetched: ", thisword)
-            #print("word fetch successfull")
         except:
             break
         if thisword in keywords: #checks for keywords
-            #print("word of analysis in keywords!")
             analysis['KEYWORD'] += 1
             continue
         elif thisword.isidentifier():
-            #print("Word in analysis is identifier!")
             analysis['IDENTIFIER'] += 1
             continue
         elif thisword.isalnum():
-            #print("Word in analysis is allnumbers!")
             analysis['NUMBER'] += 1
             continue
         elif thisword in operators:
-            #print("Word in operators")
-            #print("Checking for compound!")
             if len(allwords) > 1:
                 nextword = allwords[0]
-                #print("NextWord is ", nextword)
             else:
-                #print("Length of allwords not enough!")
-                #print("Finishing up execution...")
                 continue
             possiblecompound = thisword + nextword
-            #print("Possible compound operator is", possiblecompound)
             if possiblecompound in cOperators:
-                #print("Possible compound found to be actual cOperator!")
                 analysis['COMPOUND OPERATOR'] += 1
-                #print("Wiping second operator of compound to assure consistence!")
                 allwords.pop(0) #accounts for next word being part of this operator, already pops it so next iteration got a fresh word.
                 continue
             else:
-                #print("Possible compound found to be inadequate")
+
                 analysis['OPERATOR'] += 1
                 continue
         elif thisword in delimiters:
-            #print("Word in analysis found to be a delimiter!")
+
             if thisword == ":" and allwords[0] == "=":
                 analysis['COMPOUND OPERATOR'] += 1
                 allwords.pop(0)

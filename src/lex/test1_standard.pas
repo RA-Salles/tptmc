@@ -1,3 +1,5 @@
+if32 32if
+
 program AnalisadorLexicoTeste;
 var
   numero: integer;

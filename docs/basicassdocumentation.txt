@@ -49,10 +49,12 @@ Index
     4.4 Synthatical analyzer TODO
     4.5 Code generator TODO
 
-5. Glossary of Nato Phonetic Alphabet cursing
+
+5. EXTRA I: Glossary of Nato Phonetic Alphabet cursing
     5.1 purpose
         This is simply so the comment reader may understand what exactly im trying to 
         mean when I say something in the lines of Echo Sierra Alpha Delta or Phantom Oscar Sierra.
+        Documentation on cursing will be added as they are used.
 
     5.2 The alphabet
         Beware papa was altered to phantom because ain't no way i'm cursing using papa. Other alterations 
@@ -81,11 +83,23 @@ Index
         UNIFORM
         VICTOR
         WESKER
+            Changed from whiskey for obvious reasons.
         XRAY
         YANKEE
         ZULU
 
+        Additionally, when multiple phonetics are used at once, such as FOXTROT FOXTROT, it will be shortened
+            to DOUBLE FOXTROT. As it is possible to see, up until certain point, we have some phonetics useful 
+            for numbers. Our standard shall be the following:
+
+        SINGLE
+        DOUBLE
+        TRIPLE
+        
+
     5.3 The common curses
+        MIKE FOXTROT
+            MotherFucker. Not to be confused with MIKE FOXTROT DELTA, which is MFDOOM.
         BETA INDIA OSCAR SIERRA
             Bios or Bicho ignorante operando um sistema.
             This one is usually applied to me, i do believe.
@@ -94,6 +108,9 @@ Index
             a major fuckup. 
         BETA ALPHA
             Bitch ass. Simple as.
-        SIERRA 
+        FOXTROT MIKE SIERRA
+            Fuck me sideways
+        DELTA ALPHA MIKE FOXTROT
+            DumbAss MotherFucker    
             
     
