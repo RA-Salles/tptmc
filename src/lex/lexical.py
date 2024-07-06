@@ -21,18 +21,129 @@ Documents to be read by the programmer (IGNORE UNTIL NEXT TOPIC IF YOU'RE SEARCH
     
 """
 import sys
+keywords = ["and","array","begin","div","do","else","end","function","goto","if",
+            "label","not","of","or","procedure","program","then","type","var",
+            "while","read","write"]
+delimiters = ["(" , ")" , "[" , "]" , " " , ";" , ":" , "," , "." ]
+operators = ["+", "-", "*", "/", "<", ">", "="]
+cOperators = [":=", "<=", ">=", "<>"]
+ignorelist = ["\n",  "(" , ")" , "[" , "]" , " " , ";" , ":" , "," , ".", "*", "+", "-", "*", "/", "<", ">", "="]
 
+def canOpener(somefile) -> list: 
+    """
+    canOpener does just that. It gets a file (the so called can) and reads its contents;
 
-def canOpener(somefile) -> list:
-    zed: list 
-    with somefile.readlines() as f: 
-        for line in f:
-            zed += line
-    
-    pass
+    Input: a file path
+    """
+    newWord: str
+    words: list 
+    filehandler = open(somefile)
+    f = filehandler.read()
+    for char in f:
+        if char not in ignorelist:
+            newWord += char
+        else:
+            if newWord != "":
+                words.append(newWord)
+            words.append(char)
+            newWord = ""
+    commentaries = 0
+    for i in range(len(words)):
+        if(i >= len(words)): break
+        if words[i] == "(" and words[i+1] == "*":
+            commentaries += 1
+            for j in range(i, len(words)):
+                print(j)
+                if words[j] == "*" and words[j+1] == ")":
+                    print("found commentary end!")
+                    for zetta in range(i, j+2, 1):
+                        #print("POPPING WORD ->", words[i])
+                        words.pop(i)
+                    break
+        
+    print(words)
+    while(True): #This could be a very dumb dumb way to do this, but i do believe it'll work out.
+        try:
+            words.remove("\n")
+        except:
+            break
 
-def bigAssAnalyzer(filelines: list) -> list:
-    pass
+    while(True):
+        try:
+            words.remove(" ")
+        except:
+            break
+    filehandler.close()
+    return words     
+
+def bigAssAnalyzer(allwords: list, comments: int) -> dict:
+    '''
+        bigAssAnalyzer -> a tokenizer which relies on a bunch of list popping and a bunch of ifs
+        input: allwords -> a list of words to be processed, already without comments, which might fuckup the analyzer.
+            aaand the number of comments, since they were removed, they get counted as such.
+    '''
+    analysis: dict = {
+            'KEYWORD': 0,
+            'IDENTIFIER': 0,
+            'NUMBER': 0,
+            'OPERATOR': 0,
+            'COMPOUND OPERATOR': 0,
+            'DELIMITER': 0,
+            'COMMENTS': 0,
+            'UNKNOWN': 0 
+        }
+    while(len(allwords) > 0): #we gotta check for all possibilities.
+        #print("fetching next word")
+        try:
+            thisword : str = allwords.pop(0)
+            #print("Word fetched: ", thisword)
+            #print("word fetch successfull")
+        except:
+            break
+        if thisword in keywords: #checks for keywords
+            #print("word of analysis in keywords!")
+            analysis['KEYWORD'] += 1
+            continue
+        elif thisword.isidentifier():
+            #print("Word in analysis is identifier!")
+            analysis['IDENTIFIER'] += 1
+            continue
+        elif thisword.isalnum():
+            #print("Word in analysis is allnumbers!")
+            analysis['NUMBER'] += 1
+            continue
+        elif thisword in operators:
+            #print("Word in operators")
+            #print("Checking for compound!")
+            if len(allwords) > 1:
+                nextword = allwords[0]
+                #print("NextWord is ", nextword)
+            else:
+                #print("Length of allwords not enough!")
+                #print("Finishing up execution...")
+                continue
+            possiblecompound = thisword + nextword
+            #print("Possible compound operator is", possiblecompound)
+            if possiblecompound in cOperators:
+                #print("Possible compound found to be actual cOperator!")
+                analysis['COMPOUND OPERATOR'] += 1
+                #print("Wiping second operator of compound to assure consistence!")
+                allwords.pop(0) #accounts for next word being part of this operator, already pops it so next iteration got a fresh word.
+                continue
+            else:
+                #print("Possible compound found to be inadequate")
+                analysis['OPERATOR'] += 1
+                continue
+        elif thisword in delimiters:
+            #print("Word in analysis found to be a delimiter!")
+            if thisword == ":" and allwords[0] == "=":
+                analysis['COMPOUND OPERATOR'] += 1
+                allwords.pop(0)
+                continue
+            analysis['DELIMITER'] += 1
+            continue
+        else:
+            analysis['UNKNOWN'] += 1
 
 def basicAssError(*argv):
     if len(argv) < 1:
@@ -61,11 +172,6 @@ elif __name__ == "__main__" and sys.argv[1] != "--debug":
         basicAssError()
     zetta = canOpener(betta)
     zetta = bigAssAnalyzer(zetta)
-
-
-
-    
-
 
 ##################!!!DEBUG BELLOW. CALL PROGRAM --DEBUG TO START DEBUG PROCEEDURE!!!#############################
 else: #runs when no arguments passed 

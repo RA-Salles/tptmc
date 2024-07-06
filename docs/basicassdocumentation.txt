@@ -6,7 +6,7 @@ Index
     1. stateofthecode
         This is a devlog of some kind to display in most detail how the code came to be
         and the research involved in it. This piece has no orderly fashion; expect major 
-        cursing and cussing. 
+        cursing and cussing. This is how i cope with my Phantom Oscar Sierra code.
     2. design
         Description of the code design 
     3. functioning
@@ -16,6 +16,19 @@ Index
 
 1. STATEOFTHECODE
 2. DESIGN
+    2.1 Lexical Analysis
+        It goes as this series of loosely structured steps:
+            1. Find all the possible token words available in the code and assemble a list with all the words
+                to be passed to Analysis
+            2. Analyze:
+                2.1 first things -> commentaries are a pain in the bloody ass to do anything with.
+                    We should take care of them first -> identify and remove them from the list. Add them to 
+                    the number of commentaries found.
+                2.2 Next is the easy part -> Tokenize and return the number of entities found. It should at the very least
+                do this for now, but later we expect it to actually tokenize it for the Synthatical analyzer later. 
+                    The expected classes are:
+
+            
 3. FUNCTIONING 
 4. USAGE 
     4.1. Requirements
@@ -25,7 +38,62 @@ Index
         After cloning the project, open the src folder and run as such:
             python main.py <path-to-your-pascal-code.pas>
         main.py serves no other purpose.
-    4.3 Lexical analyzer TODO
+    4.3 Lexical analyzer
+        4.3.1 Basics 
+            It is a simple tokenizer. It does nothing ultimately useful. 
+        4.3.2 Flags
+            There is a flag there called debug, which runs a battery of tests
+            Otherwise, to activate debug of all other functions, go inside the file and change 
+            the debug variable to 1
+            This should fill your terminal with tasteful prints 
     4.4 Synthatical analyzer TODO
     4.5 Code generator TODO
+
+5. Glossary of Nato Phonetic Alphabet cursing
+    5.1 purpose
+        This is simply so the comment reader may understand what exactly im trying to 
+        mean when I say something in the lines of Echo Sierra Alpha Delta or Phantom Oscar Sierra.
+
+    5.2 The alphabet
+        Beware papa was altered to phantom because ain't no way i'm cursing using papa. Other alterations 
+        might be done, but the most outstanding is specially papa -> phantom 
+
+        ALPHA
+        BETA
+        CHARLIE
+        DELTA
+        ECHO
+        FOXTROT
+        GOLF
+        HOTEL
+        INDIA
+        JULIETT
+        KILO
+        LIMA
+        MIKE
+        NOVEMBER
+        OSCAR 
+        PHANTOM 
+        QUEBEC
+        ROMEO
+        SIERRA 
+        TANGO
+        UNIFORM
+        VICTOR
+        WESKER
+        XRAY
+        YANKEE
+        ZULU
+
+    5.3 The common curses
+        BETA INDIA OSCAR SIERRA
+            Bios or Bicho ignorante operando um sistema.
+            This one is usually applied to me, i do believe.
+        MIKE FOXTROT UNIFORM
+            Major fuckup. MIKE might be also swaped for ROMEO for 
+            a major fuckup. 
+        BETA ALPHA
+            Bitch ass. Simple as.
+        SIERRA 
+            
     
